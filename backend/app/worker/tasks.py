@@ -1,0 +1,72 @@
+
+from datetime import datetime
+from pathlib import Path
+
+from app.database.connection import SessionLocal
+from app.database.models import DownloadJob
+from app.services.storage_service import save_download
+from app.services.youtube_service import download_youtube_video
+from app.worker.celery_app import celery_app
+
+
+@celery_app.task
+def download_youtube_task(job_id: int) -> str:
+    db = SessionLocal()
+
+    try:
+        # Find the download job
+        job = db.get(DownloadJob, job_id)
+
+        if job is None:
+            raise ValueError(f"DownloadJob {job_id} not found")
+
+        # Mark job as processing
+        job.status = "PROCESSING"
+        db.commit()
+
+        # Track the last progress value written to the database
+        last_progress = -1
+
+        def update_progress(progress: int) -> None:
+            nonlocal last_progress
+
+            if progress <= last_progress:
+                return
+
+            last_progress = progress
+            job.progress = progress
+            db.commit()
+
+        # Perform the actual download
+        output_path = download_youtube_video(
+            url=job.url,
+            format_id=job.format_id,
+            progress_callback=update_progress,
+        )
+
+        # Move the temporary file into persistent storage
+        persistent_path = save_download(
+            source_path=Path(output_path),
+            filename=f"job-{job.id}.mp4",
+        )
+
+        # Save successful result
+        job.status = "COMPLETED"
+        job.file_path = str(persistent_path)
+        job.completed_at = datetime.utcnow()
+
+        db.commit()
+
+        return str(persistent_path)
+
+    except Exception as exc:
+        # If a job exists, record the failure
+        if "job" in locals() and job is not None:
+            job.status = "FAILED"
+            job.error = str(exc)
+            db.commit()
+
+        raise
+
+    finally:
+        db.close()
