@@ -1,6 +1,6 @@
-
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+
 
 from app.database.connection import SessionLocal
 from app.database.models import DownloadJob
@@ -66,6 +66,47 @@ def download_youtube_task(job_id: int) -> str:
             job.error = str(exc)
             db.commit()
 
+        raise
+
+    finally:
+        db.close()
+        
+@celery_app.task
+def cleanup_expired_downloads() -> int:
+    db = SessionLocal()
+
+    try:
+        cutoff_time = datetime.utcnow() - timedelta(hours=24)
+
+        expired_jobs = (
+            db.query(DownloadJob)
+            .filter(
+                DownloadJob.status == "COMPLETED",
+                DownloadJob.completed_at.is_not(None),
+                DownloadJob.completed_at < cutoff_time,
+            )
+            .all()
+        )
+
+        cleaned_count = 0
+
+        for job in expired_jobs:
+            if job.file_path:
+                file_path = Path(job.file_path)
+
+                if file_path.is_file():
+                    file_path.unlink()
+
+            job.status = "EXPIRED"
+            job.file_path = None
+            cleaned_count += 1
+
+        db.commit()
+
+        return cleaned_count
+
+    except Exception:
+        db.rollback()
         raise
 
     finally:
