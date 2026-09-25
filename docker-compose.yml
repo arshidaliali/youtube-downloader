@@ -1,0 +1,55 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: youtube_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: youtube_downloader
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    volumes:
+      - downloads_data:/app/storage/downloads
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    command: celery -A app.worker.celery_app.celery_app worker --loglevel=INFO --concurrency=1
+    volumes:
+      - downloads_data:/app/storage/downloads
+    depends_on:
+      - postgres
+      - redis
+
+  beat:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    command: celery -A app.worker.celery_app.celery_app beat --loglevel=INFO
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres_data:
+  redis_data:
+  downloads_data:

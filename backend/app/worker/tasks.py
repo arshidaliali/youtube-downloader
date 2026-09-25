@@ -1,6 +1,6 @@
+
 from datetime import datetime, timedelta
 from pathlib import Path
-
 
 from app.database.connection import SessionLocal
 from app.database.models import DownloadJob
@@ -70,7 +70,8 @@ def download_youtube_task(job_id: int) -> str:
 
     finally:
         db.close()
-        
+
+
 @celery_app.task
 def cleanup_expired_downloads() -> int:
     db = SessionLocal()
