@@ -1,5 +1,6 @@
 import os
 from celery import Celery
+from celery.schedules import crontab
 
 celery_app = Celery(
     "youtube_downloader",
@@ -8,8 +9,13 @@ celery_app = Celery(
     include=["app.worker.tasks"],
 )
 
-
 celery_app.conf.update(
     task_track_started=True,
     result_expires=3600,
+    beat_schedule={
+        "cleanup-expired-downloads": {
+            "task": "app.worker.tasks.cleanup_expired_downloads",
+            "schedule": crontab(minute="*/15"),
+        },
+    },
 )
