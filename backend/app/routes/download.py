@@ -131,6 +131,7 @@ def download_video(
                 status=job.status,
             )
         except Exception as exc:
+            
             if job.id is not None:
                 db.rollback()
                 job.status = "FAILED"

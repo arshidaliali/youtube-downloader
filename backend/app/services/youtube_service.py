@@ -230,6 +230,7 @@ def get_youtube_video_info(url: str):
     }
 
     try:
+        
         with yt_dlp.YoutubeDL(options) as downloader:
             video = downloader.extract_info(
                 url,
@@ -413,6 +414,7 @@ def download_youtube_video(
     ffmpeg_available = shutil.which("ffmpeg") is not None
     ffprobe_available = shutil.which("ffprobe") is not None
     def progress_hook(progress: Dict[str, Any]) -> None:
+        print("YT-DLP PROGRESS:", progress)
         if progress.get("status") != "downloading":
             return
 
@@ -432,6 +434,7 @@ def download_youtube_video(
         percentage = max(0, min(percentage, 100))
 
         if progress_callback:
+            print("CALLING PROGRESS CALLBACK:", percentage)
             progress_callback(percentage)
 
     try:
@@ -462,7 +465,7 @@ def download_youtube_video(
                     "player_client": ["android"],
                 },
             }
-
+        options["progress_hooks"] = [progress_hook]
         with yt_dlp.YoutubeDL(options) as downloader:
             downloader.download([url])
 
@@ -486,7 +489,7 @@ def download_youtube_video(
                 "The downloaded file could not be verified as H.264/AAC MP4"
             )
 
-        return final_path
+        return (final_path, video.get("title"))
     except DownloadError as exc:
         shutil.rmtree(temporary_directory, ignore_errors=True)
         raise YouTubeServiceError("Unable to download the YouTube video") from exc

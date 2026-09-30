@@ -10,9 +10,8 @@ from app.worker.celery_app import celery_app
 
 
 @celery_app.task
-def download_youtube_task(job_id: int) -> str:
+def download_youtube_task(job_id: int):
     db = SessionLocal()
-
     try:
         # Find the download job
         job = db.get(DownloadJob, job_id)
@@ -29,16 +28,19 @@ def download_youtube_task(job_id: int) -> str:
 
         def update_progress(progress: int) -> None:
             nonlocal last_progress
+            print("UPDATE_PROGRESS RECEIVED:", progress)
 
             if progress <= last_progress:
                 return
 
             last_progress = progress
+            print("SAVING PROGRESS TO DATABASE:", progress)
             job.progress = progress
             db.commit()
 
         # Perform the actual download
-        output_path = download_youtube_video(
+       # Perform the actual download
+        output_path, video_title = download_youtube_video(
             url=job.url,
             format_id=job.format_id,
             progress_callback=update_progress,
@@ -47,14 +49,13 @@ def download_youtube_task(job_id: int) -> str:
         # Move the temporary file into persistent storage
         persistent_path = save_download(
             source_path=Path(output_path),
-            filename=f"job-{job.id}.mp4",
+            filename=f"{video_title}.mp4",
         )
 
         # Save successful result
         job.status = "COMPLETED"
         job.file_path = str(persistent_path)
         job.completed_at = datetime.utcnow()
-
         db.commit()
 
         return str(persistent_path)
