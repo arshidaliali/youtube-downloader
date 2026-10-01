@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -13,8 +14,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YouTube Downloader",
-  description: "Download YouTube videos and Shorts to your device.",
+  metadataBase: new URL("https://youtubevideodownload.app"),
+
+  title: "YouTube Downloader – Download Videos & Shorts",
+
+  description:
+    "Download YouTube videos and Shorts in supported formats and qualities. Fast, simple, and easy to use with no account required.",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "YouTube Downloader – Download Videos & Shorts",
+    description:
+      "Download YouTube videos and Shorts in supported formats and qualities. Fast, simple, and easy to use with no account required.",
+    url: "https://youtubevideodownload.app/",
+    siteName: "YouTube Video Download",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary",
+    title: "YouTube Downloader – Download Videos & Shorts",
+    description:
+      "Download YouTube videos and Shorts in supported formats and qualities.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

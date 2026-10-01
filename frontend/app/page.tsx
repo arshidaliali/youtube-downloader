@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import Footer from "./components/footer";
+import StructuredData from "./components/structured-data";
 
 
 type VideoFormat = {
@@ -1030,17 +1032,9 @@ URL.revokeObjectURL(objectUrl);
 </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-slate-50 px-6 py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-sm text-slate-500 sm:flex-row">
-          <p>
-            <span className="font-bold text-slate-800">
-              Video<span className="text-red-600">Down</span>
-            </span>
-          </p>
-
-          <p>Simple YouTube video downloading.</p>
-        </div>
-      </footer>
+      <Footer />
+      <StructuredData />
+      
     </main>
   );
 }
