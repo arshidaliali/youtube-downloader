@@ -45,6 +45,12 @@ export default function Home() {
             >
               FAQ
             </a>
+            <a
+              href="/blog"
+              className="text-sm font-medium text-slate-600 transition-colors hover:text-red-600"
+            >
+              Blog
+            </a>
           </nav>
 
           {/* Action Area */}
