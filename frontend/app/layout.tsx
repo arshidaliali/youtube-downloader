@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://youtubevideodownload.app"),
 
   title: "YouTube Downloader – Download Videos & Shorts",
+  verification: {
+    google: "W9extQa2TU8S9UY-X-cAHktRem3z_vytBFILyUUDej4",
+  },
 
   description:
     "Download YouTube videos and Shorts in supported formats and qualities. Fast, simple, and easy to use with no account required.",
