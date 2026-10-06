@@ -58,6 +58,14 @@ export default function Footer() {
                 Privacy Policy
               </Link>
             </li>
+            <li>
+              <Link
+                href="/blog"
+                className="transition-colors text-red-500 hover:text-red-700"
+              >
+                Blog
+              </Link>
+            </li>
           </ul>
         </div>
 

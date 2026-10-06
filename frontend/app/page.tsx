@@ -1,69 +1,12 @@
 import Downloader from "./components/downloader/downloader";
 import Footer from "./components/footer";
+import NavbarClient from "./components/NavbarClient";
 import StructuredData from "./components/structured-data";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      {/* Header */}
-      <header className="fixed inset-x-0 top-4 z-50 mx-auto max-w-6xl px-4">
-        <div className="flex h-16 items-center justify-between rounded-2xl border border-white/20 bg-white/80 px-5 backdrop-blur-md shadow-lg shadow-slate-900/5">
-          {/* Logo */}
-          <a
-            href="/"
-            className="flex items-center gap-2.5"
-            aria-label="VideoDown home"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-600 text-xs text-white shadow-sm">
-              ▶
-            </span>
-
-            <span className="text-lg font-extrabold tracking-tight text-slate-900">
-              Video<span className="text-red-600">Down</span>
-            </span>
-          </a>
-
-          {/* Center Navigation Links (Desktop) */}
-          <nav className="hidden items-center gap-8 md:flex">
-            <a
-              href="#how-it-works"
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-red-600"
-            >
-              How it works
-            </a>
-
-            <a
-              href="#features"
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-red-600"
-            >
-              Features
-            </a>
-
-            <a
-              href="#faq"
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-red-600"
-            >
-              FAQ
-            </a>
-            <a
-              href="/blog"
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-red-600"
-            >
-              Blog
-            </a>
-          </nav>
-
-          {/* Action Area */}
-          <div className="flex items-center">
-            <a
-              href="#downloader"
-              className="inline-flex items-center justify-center rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-red-700 hover:shadow-red-500/25 hover:shadow-md"
-            >
-              Get Started
-            </a>
-          </div>
-        </div>
-      </header>
+      <NavbarClient />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-red-50 via-white to-white">
