@@ -223,7 +223,7 @@ export default async function BlogArticlePage({
                       return (
                         <h2
                           key={index}
-                          id={`section-${index}`}
+                          id={createHeadingId(section.text)}
                           className="mb-5 mt-12 scroll-mt-28 text-2xl font-bold tracking-tight text-[#17211d] first:mt-0 sm:mt-16 sm:text-3xl font-sans"
                         >
                           {section.text}
