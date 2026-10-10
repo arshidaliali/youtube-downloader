@@ -391,7 +391,7 @@ def download_youtube_video(
     url: str,
     format_id: Optional[str] = None,
     progress_callback: Optional[Callable[[int], None]] = None,
-) -> Path:
+) -> tuple[Path, str | None]:
     """Download one YouTube video into a private temporary directory."""
     if not is_youtube_url(url) or not get_youtube_video_id(url):
         raise YouTubeServiceError("Invalid YouTube URL")

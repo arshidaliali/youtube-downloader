@@ -5,13 +5,17 @@ from pathlib import Path
 from app.database.connection import SessionLocal
 from app.database.models import DownloadJob
 from app.services.storage_service import save_download
-from app.services.youtube_service import download_youtube_video
+from app.services.youtube_service import (
+    cleanup_youtube_download,
+    download_youtube_video,
+)
 from app.worker.celery_app import celery_app
 
 
 @celery_app.task
 def download_youtube_task(job_id: int):
     db = SessionLocal()
+    output_path = None
     try:
         # Find the download job
         job = db.get(DownloadJob, job_id)
@@ -70,7 +74,12 @@ def download_youtube_task(job_id: int):
         raise
 
     finally:
-        db.close()
+        try:
+            if output_path is not None:
+                cleanup_youtube_download(str(output_path))
+        finally:
+            db.close()
+
 
 
 @celery_app.task
@@ -78,7 +87,7 @@ def cleanup_expired_downloads() -> int:
     db = SessionLocal()
 
     try:
-        cutoff_time = datetime.utcnow() - timedelta(hours=24)
+        cutoff_time = datetime.utcnow() - timedelta(minutes=15)
 
         expired_jobs = (
             db.query(DownloadJob)
