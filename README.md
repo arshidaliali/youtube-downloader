@@ -129,6 +129,14 @@ SEO and discoverability are considered throughout the development of this projec
 
 The goal is to build a web application that is not only functional but also accessible, performant, and discoverable by search engines.
 
+Lighthouse Audit Results
+
+The project has been evaluated using Google Lighthouse to assess performance, accessibility, best practices, and SEO.
+
+
+
+The audit results demonstrate a focus on web performance, accessibility, technical quality, and search-engine discoverability.
+
 
    
 ## Screenshots
@@ -141,6 +149,9 @@ The goal is to build a web application that is not only functional but also acce
 
 ### Download Completed
 ![Download Completed](screenshots/Download%20Completed.png)
+
+### Best SEO Results
+![SEO Results](screenshots/SEOresults.png)
 
 
 **Live Demo:** [youtubevideodownload.app](https://youtubevideodownload.app)
