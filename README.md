@@ -55,6 +55,71 @@ The application separates the user interface, API backend, and background proces
 
 
 
+## Installation and Local Setup
+
+### Prerequisites
+
+Before running the project, install:
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or Docker Engine
+- [Docker Compose](https://docs.docker.com/compose/)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/arshidaliali/youtube-downloader.git
+cd youtube-downloader
+```
+
+### 2. Configure environment variables
+
+Create the backend environment file from the example:
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+Open `backend/.env` and replace `CHANGE_ME` in `DATABASE_URL` with the PostgreSQL password you intend to use.
+
+Create a root `.env` file for Docker Compose:
+
+```bash
+echo "POSTGRES_PASSWORD=CHANGE_ME" > .env
+```
+
+Replace `CHANGE_ME` with the same PostgreSQL password used in `backend/.env`.
+
+**Security:** Never commit real `.env` files or credentials to version control.
+
+### 3. Start the application
+
+Run the application using Docker Compose:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+```
+
+This starts the application services in the background and builds the required Docker images.
+
+
+
+
+### 4. Access the application
+
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+- **API documentation:** http://localhost:8000/docs
+
+### 5. Stop the application
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml down
+```
+
+This stops and removes the containers while preserving named volumes, including persistent database and download data.
+
+
+
    
 ## Screenshots
 
