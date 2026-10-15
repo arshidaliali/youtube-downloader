@@ -40,3 +40,17 @@ The application separates the user interface, API backend, and background proces
 2. The backend validates the request and retrieves video information.
 3. When a download is requested, the backend dispatches background work through Celery and Redis.
 4. A worker processes the download, and the frontend can retrieve the job status and access the resulting file through the API.
+
+
+
+   
+## Screenshots
+
+### Homepage
+![Homepage](screenshots/homepage.png)
+
+### Video Format Selection
+![Video Formats](screenshots/videoformats.png)
+
+### Download Completed
+![Download Completed](screenshots/downloadcompleted.png)
