@@ -20,6 +20,18 @@ A full-stack web application for retrieving video information, selecting availab
 - Backend service integration and downloadable file delivery
 - Containerized application deployment
 
+  
+- ## Features
+
+- Retrieve video information from a submitted URL.
+- View available video formats and resolutions.
+- Process download requests using background tasks.
+- Track download job status through the API.
+- Process video downloads with yt-dlp and FFmpeg.
+- Deliver completed download files through the application.
+- Use a responsive web interface built with Next.js and TypeScript.
+- Run application services using Docker Compose.
+
 This project demonstrates practical experience building and integrating frontend applications, Python APIs, background workers and supporting infrastructure.
 
 ## Architecture Overview
