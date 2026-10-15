@@ -118,6 +118,16 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml down
 
 This stops and removes the containers while preserving named volumes, including persistent database and download data.
 
+## SEO & Performance Optimization
+
+SEO and discoverability are considered throughout the development of this project.
+
+- **Rendering:** SEO-friendly rendering techniques using Next.js.
+- **Technical SEO:** Metadata, sitemap, robots.txt, and crawlability.
+- **Search indexing:** Website indexing and search visibility monitored through Google Search Console.
+- **Performance audits:** Lighthouse used to evaluate performance, accessibility, best practices, and SEO.
+
+The goal is to build a web application that is not only functional but also accessible, performant, and discoverable by search engines.
 
 
    
