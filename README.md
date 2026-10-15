@@ -44,13 +44,15 @@ The application separates the user interface, API backend, and background proces
 
 
    
-## Screenshots
+Screenshots
 
-### Homepage
-![Homepage](screenshots/homepage.png)
+Homepage
 
-### Video Format Selection
-![Video Formats](screenshots/videoformats.png)
 
-### Download Completed
-![Download Completed](screenshots/downloadcompleted.png)
+
+Video Format Selection
+
+
+
+Download Completed
+
