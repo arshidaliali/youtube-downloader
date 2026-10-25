@@ -24,15 +24,15 @@ export default function Home() {
           {/* Heading */}
           <h1 className="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
             Download{" "}
-            <span className="text-red-600">YouTube videos</span>
+            <span className="text-red-600">YouTube Shorts</span>
             <br className="hidden sm:block" />{" "}
             without the hassle
           </h1>
 
           {/* Description */}
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-            Paste a YouTube link, choose your preferred quality, and download
-            your video directly to your device.
+            Paste a YouTube Shorts link, choose your preferred quality, and download
+            your shorts directly to your device.
           </p>
 
           {/* Interactive Downloader */}
@@ -81,7 +81,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-              Everything you need to download supported YouTube videos
+              Everything you need to download supported YouTube Shorts
               quickly and easily.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Home() {
               </h3>
 
               <p className="mt-3 leading-7 text-slate-600">
-                Paste a YouTube URL, analyze the video, select your preferred
+                Paste a YouTube Shorts URL, analyze the video, select your preferred
                 quality, and download.
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function Home() {
 
               <p className="mt-3 leading-7 text-slate-600">
                 Select from the video formats and quality options available for
-                the YouTube video you provide.
+                the YouTube Shorts you provide.
               </p>
             </div>
 
@@ -200,7 +200,7 @@ export default function Home() {
               <h3 className="mt-5 text-lg font-bold">Paste your URL</h3>
 
               <p className="mt-2 leading-7 text-slate-600">
-                Copy a YouTube video URL and paste it into the downloader.
+                Copy a YouTube Shorts URL and paste it into the downloader.
               </p>
             </div>
 
@@ -225,7 +225,7 @@ export default function Home() {
               </div>
 
               <h3 className="mt-5 text-lg font-bold">
-                Download your video
+                Download your video Shorts
               </h3>
 
               <p className="mt-2 leading-7 text-slate-600">

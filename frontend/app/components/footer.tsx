@@ -13,9 +13,9 @@ export default function Footer() {
               Video<span className="text-red-600">Down</span>
             </span>
           </p>
-
+          s
           <p className="max-w-xs text-xs leading-relaxed text-slate-400">
-            Fast, simple, and reliable tools for downloading YouTube videos
+            Fast, simple, and reliable tools for downloading YouTube Shorts
             with ease.
           </p>
 
@@ -76,7 +76,7 @@ export default function Footer() {
           </h3>
 
           <p className="max-w-xs text-xs leading-relaxed text-slate-400">
-            Download available YouTube videos in supported formats and
+            Download available YouTube Shorts in supported formats and
             qualities directly to your device.
           </p>
 

@@ -313,9 +313,8 @@ export default function Downloader() {
       const contentDisposition =
         fileResponse.headers.get("Content-Disposition");
 
-      let filename = `${
-        videoInfo.title || "youtube-video"
-      }.mp4`;
+      let filename = `${videoInfo.title || "youtube-video"
+        }.mp4`;
 
       if (contentDisposition) {
         const filenameMatch = contentDisposition.match(
@@ -396,7 +395,7 @@ export default function Downloader() {
                 type="url"
                 value={url}
                 onChange={(event) => setUrl(event.target.value)}
-                placeholder="Paste your YouTube video URL..."
+                placeholder="Paste your YouTube shorts URL here..."
                 className="h-14 w-full bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400 sm:text-base"
                 disabled={isAnalyzing || isDownloading}
               />
@@ -568,7 +567,7 @@ export default function Downloader() {
                               {" • "}
                               {format.ext.toUpperCase()}
                               {format.width &&
-                              format.height
+                                format.height
                                 ? ` • ${format.width}×${format.height}`
                                 : ""}
                               {format.fps
@@ -577,7 +576,7 @@ export default function Downloader() {
                               {" • "}
                               {formatFileSize(
                                 format.filesize ||
-                                  format.filesize_approx,
+                                format.filesize_approx,
                               )}
                             </option>
                           ))}
@@ -613,7 +612,7 @@ export default function Downloader() {
                             <p className="mt-0.5 text-xs text-slate-500">
                               {selectedFormatData.ext.toUpperCase()}
                               {selectedFormatData.width &&
-                              selectedFormatData.height
+                                selectedFormatData.height
                                 ? ` • ${selectedFormatData.width} × ${selectedFormatData.height}`
                                 : ""}
                               {selectedFormatData.fps
@@ -625,7 +624,7 @@ export default function Downloader() {
                           <div className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">
                             {formatFileSize(
                               selectedFormatData.filesize ||
-                                selectedFormatData.filesize_approx,
+                              selectedFormatData.filesize_approx,
                             )}
                           </div>
                         </div>
@@ -667,11 +666,10 @@ export default function Downloader() {
                             <div
                               className="h-full rounded-full bg-white transition-all duration-300"
                               style={{
-                                width: `${
-                                  downloadStage === "server"
-                                    ? downloadProgress
-                                    : browserDownloadProgress
-                                }%`,
+                                width: `${downloadStage === "server"
+                                  ? downloadProgress
+                                  : browserDownloadProgress
+                                  }%`,
                               }}
                             />
                           </div>
