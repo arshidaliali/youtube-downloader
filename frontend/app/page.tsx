@@ -31,8 +31,9 @@ export default function Home() {
 
           {/* Description */}
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-            Paste a YouTube link, choose your preferred quality, and download
-            your video directly to your device.
+            VideoDown is a free YouTube video downloader that lets you download
+            videos in your preferred quality. Paste a YouTube link, choose a
+            format, and save your video directly to your device.
           </p>
 
           {/* Interactive Downloader */}

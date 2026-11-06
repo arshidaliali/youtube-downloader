@@ -15,14 +15,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://youtubevideodownload.app"),
 
-  title: "YouTube Shorts Downloader – Save Shorts & Videos Online",
+  title: "YouTube Video Downloader – Download Videos in HD MP4",
 
   keywords: [
+    "YouTube Video Downloader",
+    "Free YouTube Video Downloader",
+    "Download YouTube Videos",
+    "Video Downloader App",
+    "Video Down",
     "YouTube Shorts Downloader",
     "Download YouTube Shorts",
-    "Save YouTube Shorts",
-    "YouTube Video Downloader",
-    "Shorts to MP4",
   ],
 
   verification: {
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Free YouTube Shorts Downloader. Fast and easy way to save YouTube Shorts and videos in HD MP4 quality instantly with no registration required.",
+    "Download YouTube videos in HD MP4. Paste a link, choose your preferred quality, and save videos quickly with no registration. YouTube Shorts are supported.",
 
   alternates: {
     canonical: "/",
@@ -49,9 +51,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "YouTube Shorts Downloader – Save Shorts & Videos Online",
+    title: "YouTube Video Downloader – Download Videos in HD MP4",
     description:
-      "Quickly download YouTube Shorts and videos in high quality. Fast, simple, and free with no account required.",
+      "Download YouTube videos in HD MP4. Paste a link, choose your preferred quality, and save videos quickly with no registration. YouTube Shorts supported.",
     url: "https://youtubevideodownload.app/",
     siteName: "YouTube Video Download",
     locale: "en_US",
@@ -60,9 +62,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "YouTube Shorts Downloader – Save Shorts & Videos Online",
+    title: "YouTube Video Downloader – Download Videos in HD MP4",
     description:
-      "Save YouTube Shorts and videos in high quality instantly. Free, fast, and easy to use.",
+      "Download YouTube videos in HD MP4. Fast, simple, and free. YouTube Shorts supported.",
   },
 };
 
